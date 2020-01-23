@@ -1,6 +1,7 @@
 {
     "name": "raph6/enkryptor",
     "description": "Encryption module based on openssl",
+    "type": "library",
     "authors": [
         {
             "name": "raph",
