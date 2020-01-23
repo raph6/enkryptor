@@ -1,7 +1,6 @@
 {
     "name": "raph6/enkryptor",
     "description": "Encryption module based on openssl",
-    "type": "composer-plugin",
     "authors": [
         {
             "name": "raph",
