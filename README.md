@@ -32,5 +32,5 @@ var_dump($decrypted);
 ```
 You can get available cipher methods by using
 ```php
-var_dump(openssl_get_cipher_methods());
+var_dump(Enkryptor::cipherList());
 ```
