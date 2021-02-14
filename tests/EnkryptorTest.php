@@ -22,12 +22,17 @@ class EnkryptorTest extends TestCase {
 
         $str = 'test unitaire 2';
         $password = '77&$#@&';
-
         $encrypted = Enkryptor::encrypt($str, $password);
-
         $this->assertEquals(
             $str,
             Enkryptor::decrypt($encrypted, $password)
+        );
+
+        $cipher = 'des-ede3-cfb1';
+        $encryptedcipher = Enkryptor::encrypt($str, $password, $cipher);
+        $this->assertEquals(
+            $str,
+            Enkryptor::decrypt($encryptedcipher, $password, $cipher)
         );
     }
 
