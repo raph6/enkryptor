@@ -34,14 +34,21 @@ class EnkryptorTest extends TestCase {
     public function testCannotBeDecrypted() {
         $encrypted = 'c2+foLFa9OGfOjjsJ/n8m0NmcjJ6MWYzVzgyeENBcDRZSFY0NGc9PQ==';
         $password = 'haha';
-        $this->assertFalse(Enkryptor::decrypt($encrypted, $password, 'test'));
+        $this->assertFalse(Enkryptor::decrypt(null, $password));
+        $this->assertFalse(Enkryptor::decrypt('', $password));
+        $this->assertFalse(Enkryptor::decrypt($encrypted, null));
+        $this->assertFalse(Enkryptor::decrypt($encrypted, ''));
+        $this->assertFalse(Enkryptor::decrypt($encrypted, $password, 'bad cipher'));
         $this->assertFalse(Enkryptor::decrypt($encrypted, 'fake password'));
     }
 
     public function testCannotBeEncrypted() {
         $str = 'hello world';
         $password = 'dlrow olleh';
-        $this->assertFalse(Enkryptor::encrypt($str, $password, 'test'));
+        $this->assertFalse(Enkryptor::encrypt(null, $password));
+        $this->assertFalse(Enkryptor::encrypt('', $password));
+        $this->assertFalse(Enkryptor::encrypt($str, null));
         $this->assertFalse(Enkryptor::encrypt($str, ''));
+        $this->assertFalse(Enkryptor::encrypt($str, $password, 'bad cipher'));
     }
 }

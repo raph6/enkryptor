@@ -19,13 +19,10 @@ class Enkryptor
      */
     public static function encrypt ($str, $password, $cipher = 'aes-256-cbc')
     {
-        if (is_null($str) || empty($str))
-            return false;
-
-        if (is_null($password) || empty($password))
-            return false;
-
-        if (in_array($cipher, openssl_get_cipher_methods())) {
+        if (!is_null($str) && !empty($str)
+            && !is_null($password) && !empty($password)
+            && in_array($cipher, self::cipherList()))
+        {
             $key = pack('H*', hash('sha512', $password));
 
             $iv_size = openssl_cipher_iv_length($cipher);
@@ -50,13 +47,10 @@ class Enkryptor
      */
     public static function decrypt ($encrypted_str, $password, $cipher = 'aes-256-cbc')
     {
-        if (is_null($encrypted_str) || empty($encrypted_str))
-            return false;
-        
-        if (is_null($password) || empty($password))
-            return false;
-
-        if (in_array($cipher, openssl_get_cipher_methods())) {
+        if (!is_null($encrypted_str) && !empty($encrypted_str)
+            && !is_null($password) && !empty($password)
+            && in_array($cipher, self::cipherList()))
+        {
             $key = pack('H*', hash('sha512', $password));
             
             $ciphertext_dec = base64_decode($encrypted_str);
