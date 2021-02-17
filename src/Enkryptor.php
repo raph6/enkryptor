@@ -19,8 +19,7 @@ class Enkryptor
      */
     public static function encrypt ($str, $password, $cipher = 'aes-256-cbc')
     {
-        if (!is_null($str) && !empty($str)
-            && !is_null($password) && !empty($password)
+        if (is_string($str) && is_string($password)
             && in_array($cipher, self::cipherList()))
         {
             $key = pack('H*', hash('sha512', $password));
@@ -47,8 +46,7 @@ class Enkryptor
      */
     public static function decrypt ($encrypted_str, $password, $cipher = 'aes-256-cbc')
     {
-        if (!is_null($encrypted_str) && !empty($encrypted_str)
-            && !is_null($password) && !empty($password)
+        if (is_string($encrypted_str) && is_string($password)
             && in_array($cipher, self::cipherList()))
         {
             $key = pack('H*', hash('sha512', $password));
