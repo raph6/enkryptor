@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Raphaël BLEUZET <https://github.com/raph6>
+ * @author raph <https://github.com/raph6>
  */
 namespace raph6\Enkryptor;
 /**
